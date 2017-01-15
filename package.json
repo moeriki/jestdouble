@@ -1,0 +1,46 @@
+{
+  "name": "jestdouble",
+  "version": "0.9.0",
+  "description": "",
+  "keywords": [],
+  "author": "Dieter Luypaert <dieterluypaert@gmail.com>",
+  "license": "MIT",
+  "repository": "git@github.com:Moeriki/jestdouble.git",
+  "main": "index.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "lint": "eslint *.js test/",
+    "test": "jest",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "precommit": "lint-staged",
+    "prepush": "npm test"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "index.js"
+    ],
+    "testEnvironment": "node",
+    "testRegex": "/test/.*\\.test\\.js$"
+  },
+  "lint-staged": {
+    "*.js": "eslint"
+  },
+  "dependencies": {
+    "matchr": "~1.0.1"
+  },
+  "devDependencies": {
+    "async": "^2.1.4",
+    "coveralls": "^2.11.15",
+    "eslint": "~3.12.2",
+    "eslint-config-muriki": "~8.1.0",
+    "eslint-plugin-import": "~2.2.0",
+    "eslint-plugin-jasmine": "~2.2.0",
+    "eslint-plugin-node": "~3.0.5",
+    "husky": "^0.12.0",
+    "jest-cli": "^18.1.0",
+    "lint-staged": "^3.2.5",
+    "lodash": "^4.17.4"
+  }
+}
