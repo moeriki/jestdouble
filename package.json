@@ -28,7 +28,7 @@
     "*.js": "eslint"
   },
   "dependencies": {
-    "matchr": "~1.0.1"
+    "matchr": "~1.1.0"
   },
   "devDependencies": {
     "async": "^2.1.4",

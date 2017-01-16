@@ -178,7 +178,7 @@ func('two');
 func('three');
 expect(func).toHaveBeenCalled();
 expect(func).toHaveBeenCalledTimes(3);
-expect(func).toHaveBeenCalledWith('one);
+expect(func).toHaveBeenCalledWith('one');
 ```
 
 <a name="conditionally-verifying-calls"></a>
@@ -217,6 +217,32 @@ func('three');
 expect(func.with(/^t.*/)).toHaveBeenCalledTimes(2);
 ```
 
+### Matching options
+
+There are three matching options.
+
+```javascript
+const td = require('testdouble');
+
+td.setMatchingOptions({
+  matchPartialObjects: true,   // default: false
+  matchPartialArrays: true,    // default: false
+  matchOutOfOrderArrays: true, // default: false
+});
+
+const func = td();
+
+func.calledWith([{ a: 1 }, [1, 2, 3]]).returns('ok');
+
+func([{ a: 1, b: 2 }, [3, 2]]); // 'ok'
+```
+
+```javascript
+const func = td();
+func([3, 2, 1]);
+expect(func.with([3, 2])).toHaveBeenCalled();
+```
+
 ## Notes
 
 **Results order**
@@ -236,22 +262,6 @@ const func = td(() => 1);
 func.calledWith('two').returns(2);
 func(); // 1
 func('two'); // 2
-```
-
-**Partial arrays / objects**
-
-Conditionally mocked results / verifications will match partial out-of-order arrays and partial objects.
-
-```javascript
-const func = td();
-func.calledWith({ a: 1 }).returns(1);
-func({ a: 1, b: 2 }); // 1
-```
-
-```javascript
-const func = td();
-func([3, 2, 1]);
-expect(func.with([3, 2])).toHaveBeenCalled();
 ```
 
 ## Credit

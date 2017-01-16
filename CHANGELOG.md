@@ -11,7 +11,6 @@
 *   check jasmine API
 *   check sinon API
 *   check testdouble API
-*   review matchr sensibilities
 
 **1.0.0**
 

@@ -25,4 +25,8 @@ describe('jestdouble', () => {
     expect(func(1, 2, 3)).toEqual([1, 2, 3]);
   });
 
+  it('should expose matchr options', () => {
+    expect(jd.setMatchingOptions).toBeInstanceOf(Function);
+  });
+
 });

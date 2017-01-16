@@ -49,6 +49,14 @@ const toString = (response) => { // eslint-disable-line
   }
 };
 
+// initialise
+
+matchr.setDefaultOptions({
+  matchPartialObjects: false,
+  matchPartialArrays: false,
+  matchOutOfOrderArrays: false,
+});
+
 // exports
 
 function jestdouble(invokee) {
@@ -234,5 +242,7 @@ function jestdouble(invokee) {
 
 jestdouble.fn = jestdouble; // eslint-disable-line id-length
 jestdouble.func = jestdouble;
+
+jestdouble.setMatchingOptions = matchr.setDefaultOptions;
 
 module.exports = jestdouble;
