@@ -25,9 +25,9 @@ describe('jestdouble', () => {
     expect(func()).toBe(1);
   });
 
-  it('should call implementation with args', () => {
-    func = jd((one, two, three) => [one, two, three]);
-    expect(func(1, 2, 3)).toEqual([1, 2, 3]);
+  it('should call invokee with args', () => {
+    func = jd((one, two) => [one, two]);
+    expect(func(1, 2)).toEqual([1, 2]);
   });
 
   it('should expose matchr options', () => {
