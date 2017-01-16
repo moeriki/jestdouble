@@ -4,6 +4,8 @@
 
 const jd = require('../index'); // eslint-disable-line id-length
 
+const utils = require('./utils');
+
 // tests
 
 describe('register-calls', () => {
@@ -21,21 +23,33 @@ describe('register-calls', () => {
       expect(func('one')).toBe(1);
     });
 
-    it('should return value when called exactly with callback');
+    it('should return value when called exactly with callback implicitely', (done) => {
+      func.calledWith('one').callbacks(null, 1);
+      func('one', (err, value) => {
+        expect(err).toBe(null);
+        expect(value).toBe(1);
+        done();
+      });
+    });
+
+    it('should return value when called exactly with callback explicitely', (done) => {
+      func.calledWith('one', Function).callbacks(null, 1);
+      func('one', (err, value) => {
+        expect(err).toBe(null);
+        expect(value).toBe(1);
+        done();
+      });
+    });
 
     it('should not return value when called with more arguments', () => {
       func.calledWith('one').returns(1);
       expect(func('one', 'two')).toBe(undefined);
     });
 
-    it('should not return value when called with more arguments and callback');
-
     it('should not return value when called with less arguments', () => {
       func.calledWith('one').returns(1);
       expect(func()).toBe(undefined);
     });
-
-    it('should not return value when called with less arguments and callback');
 
     it('should not return value when called with other arguments', () => {
       func.calledWith('one').returns(1);
@@ -58,21 +72,48 @@ describe('register-calls', () => {
       expect(func('one')).toBe(1);
     });
 
-    it('calledStartingWith should return value when called exactly with callback');
+    it('calledStartingWith should return value when called exactly with callback implicitely', (done) => {
+      func.calledStartingWith('one').callbacks(null, 1);
+      func('one', (err, value) => {
+        expect(err).toBe(null);
+        expect(value).toBe(1);
+        done();
+      });
+    });
+
+    it('calledStartingWith should return value when called exactly with callback explicitely', (done) => {
+      func.calledStartingWith('one', Function).callbacks(null, 1);
+      func('one', (err, value) => {
+        expect(err).toBe(null);
+        expect(value).toBe(1);
+        done();
+      });
+    });
 
     it('calledStartingWith should return value when called with more arguments', () => {
       func.calledStartingWith('one').returns(1);
       expect(func('one', 'two')).toBe(1);
     });
 
-    it('calledStartingWith should return value when called with more arguments and callback');
+    it('calledStartingWith should return value when called with more arguments and callback', (done) => {
+      func.calledStartingWith('one').callbacks(null, 1);
+      func('one', 'two', (err, value) => {
+        expect(err).toBe(null);
+        expect(value).toBe(1);
+        done();
+      });
+    });
 
     it('calledStartingWith should not return value when called with less arguments', () => {
       func.calledStartingWith('one').returns(1);
       expect(func()).toBe(undefined);
     });
 
-    it('calledStartingWith should not return value when called with less arguments and callback');
+    it('calledStartingWith should not return value when called with less arguments and callback', (done) => {
+      func.calledStartingWith('one').callbacks(null, 1);
+      func(utils.dontc);
+      setImmediate(done);
+    });
 
     it('calledStartingWith should not return value when called with other arguments', () => {
       func.calledStartingWith('one').returns(1);

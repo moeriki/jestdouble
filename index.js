@@ -63,18 +63,6 @@ function jestdouble(invokee) {
 
   const fallbackResponses = []; // see DEFAULT_CONFIG, but never has args
 
-  if (invokee) {
-    fallbackResponses.push(
-      assignAllWithDefaultResponse({
-        allowAdditionalArgs: true,
-        invokee: typeof invokee === 'function'
-          ? invokee
-          : () => invokee,
-        type: 'invokee',
-      })
-    );
-  }
-
   // private functions
 
   function registerCall(expectedArgs, config) {
@@ -106,6 +94,20 @@ function jestdouble(invokee) {
     }
   }
 
+  // initialise
+
+  if (invokee) {
+    fallbackResponses.push(
+      assignAllWithDefaultResponse({
+        allowAdditionalArgs: true,
+        invokee: typeof invokee === 'function'
+          ? invokee
+          : () => invokee,
+        type: 'invokee',
+      })
+    );
+  }
+
   // exposed
 
   function double() { // eslint-disable-line
@@ -117,7 +119,7 @@ function jestdouble(invokee) {
         return false;
       }
       let responseArgsLength = response.args.length;
-      if (response.type === 'callback') {
+      if (response.type === 'callback' && last(response.args) !== Function) {
         responseArgsLength++;
       }
       if (callArgs.length > responseArgsLength && !response.allowAdditionalArgs) {

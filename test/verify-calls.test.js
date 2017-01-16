@@ -35,19 +35,13 @@ describe('verify', () => {
       expect(func.with('one')).toHaveBeenCalled();
     });
 
-    it('should verify when called exactly with callback');
-
     it('should not verify when called with more arguments', () => {
       expect(func.with('one', 'two')).not.toHaveBeenCalled();
     });
 
-    it('should not verify when called with more arguments and callback');
-
     it('should not verify when called with less arguments', () => {
       expect(func.with()).not.toHaveBeenCalled();
     });
-
-    it('should not verify when called with less arguments and callback');
 
     it('should not verify when called with other arguments', () => {
       expect(func.with('four')).not.toHaveBeenCalled();
