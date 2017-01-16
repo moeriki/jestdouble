@@ -10,6 +10,11 @@ describe('jestdouble', () => {
 
   let func;
 
+  it('should be jest mock function', () => {
+    func = jd();
+    expect(jest.isMockFunction(func)).toBe(true);
+  });
+
   it('should create double with implementation', () => {
     func = jd(() => 1);
     expect(func()).toBe(1);

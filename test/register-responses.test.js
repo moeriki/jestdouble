@@ -69,6 +69,11 @@ describe('register-responses', () => {
     manyTimes(() => expect(func()).toBe(1));
   });
 
+  it('should invoke invokee with args', () => {
+    func.invokes((one, two) => [one, two]);
+    manyTimes(() => expect(func(1, 2)).toEqual([1, 2]));
+  });
+
   it('should throw when invokee is not a function', () => {
     manyTimes(() => expect(() => func.invokes('not a function')).toThrowError(
       'Expected invokee to be of type \'function\'. Instead it is of type \'string\''
