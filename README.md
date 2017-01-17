@@ -11,16 +11,14 @@
     <a href="https://coveralls.io/github/Moeriki/jestdouble?branch=master">
       <img src="https://coveralls.io/repos/github/Moeriki/jestdouble/badge.svg?branch=master" alt="Coverage Status"></img>
     </a>
-    <!--a href="https://david-dm.org/moeriki/jestdouble">
-      <img src="https://david-dm.org/moeriki/jestdouble/status.svg" alt="dependencies Status"></img>
-    </a-->
-    <!--a href="https://snyk.io/test/github/moeriki/jestdouble">
+    <a href="https://snyk.io/test/github/moeriki/jestdouble">
       <img src="https://snyk.io/test/github/moeriki/jestdouble/badge.svg" alt="Known Vulnerabilities"></img>
-    </a-->
+    </a>
   </p>
 </p>
 
 *   [Installation](#installation)
+*   [Why](#why)
 *   [Quick start](#quick-start)
 *   [Mocking results](#mocking-results)
 *   [Conditionally mocking results](#conditionally-mocking-results)
@@ -40,12 +38,12 @@ $ npm install --save-dev jestdouble
 <a name="why"></a>
 ## Why
 
-I wanted a mocking function that:
+I wanted a mock/spy function that:
 
 *   could [conditionally verify calls](#conditionally-verifying-calls)
 *   had [smart value matching](#matching) enabled by default
-*   had an awesome API
 *   was [compatible with jasmine assertions](#verifying-calls)
+*   had an awesome API
 
 <a name="quick-start" />
 ## Quick start
@@ -60,8 +58,9 @@ func.returns(2);
 
 func(); // 1
 func(); // 2
+func(); // 2
 
-expect(func).toHaveBeenCalledTimes(2);
+expect(func).toHaveBeenCalledTimes(3);
 ```
 
 <a name="mocking-results"></a>
@@ -71,7 +70,7 @@ expect(func).toHaveBeenCalledTimes(2);
 
 ```javascript
 function sum(num1, num2) {
-    return num1 + num1;
+    return num1 + num2;
 }
 const mockedSum = jd(sum);
 mockedSum(1, 2); // 3
@@ -131,7 +130,7 @@ func(); // throws Error<nope>
 
 ```javascript
 const func = jd();
-func.callbacks(new Error('nope')); // aliased as 'callsback' if that makes more sense to you
+func.callbacks(new Error('nope'));
 func((err) => {/* Error<nope> */});
 ```
 
@@ -139,7 +138,7 @@ func((err) => {/* Error<nope> */});
 
 ```javascript
 const func = jd();
-func.callbacks(null, 1); // aliased as 'callsback' if that makes more sense to you
+func.callbacks(null, 1);
 func((err, value) => {/* null, 1 */});
 ```
 
@@ -205,17 +204,22 @@ expect(func.startingWith('one', 'two')).toHaveBeenCalled();
 <a name="matching"></a>
 ## Matching
 
-Both mocking results and verifying calls support [smart value matching](https://github.com/Moeriki/node-matchr). Check the [API of matchr](https://github.com/Moeriki/node-matchr).
+Both mocking results and verifying calls support smart value matching.
 
 ```javascript
 const func = jd();
 func.calledWith((str) => str === 'one').returns(1);
-func.calledWith(String).returns(2);
-func('one');
+func('one'); // 1
+```
+
+```javascript
+const func = jd();
 func('two');
 func('three');
 expect(func.with(/^t.*/)).toHaveBeenCalledTimes(2);
 ```
+
+Check the [API of matchr](https://github.com/Moeriki/node-matchr) to learn all the possibilities.
 
 ### Matching options
 
@@ -232,16 +236,12 @@ td.setMatchingOptions({
 
 const func = td();
 
-func.calledWith([{ a: 1 }, [1, 2, 3]]).returns('ok');
+func.calledWith([{ c: 3 }, { a: 1 }]).returns('OK');
 
-func([{ a: 1, b: 2 }, [3, 2]]); // 'ok'
+func([{ a: 1, z: 26 }, { b: 2 }, { c: 3 }]); // 'OK'
 ```
 
-```javascript
-const func = td();
-func([3, 2, 1]);
-expect(func.with([3, 2])).toHaveBeenCalled();
-```
+`setMatchingOptions` delegates to `matchr.setDefaultOptions`.
 
 ## Notes
 
@@ -266,4 +266,4 @@ func('two'); // 2
 
 ## Credit
 
-The name is based on [jest](https://github.com/facebook/jest) and [testdouble.js](https://github.com/testdouble/testdouble.js). API design is inspired by [testdouble.js](https://github.com/testdouble/testdouble.js).
+The name is inspired by [jest](https://github.com/facebook/jest) and [testdouble.js](https://github.com/testdouble/testdouble.js). API design is inspired by [testdouble.js](https://github.com/testdouble/testdouble.js).
