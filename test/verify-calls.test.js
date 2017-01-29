@@ -63,7 +63,7 @@ describe('verify', () => {
     });
 
     it('startingWith should verify when called exactly', () => {
-      expect(func.startingWith('one')).toHaveBeenCalled();
+      expect(func.startingWith('one', 'two')).toHaveBeenCalled();
     });
 
     it('startingWith should verify when called with more arguments', () => {
@@ -75,7 +75,6 @@ describe('verify', () => {
     });
 
     it('startingWith should not verify when called with other arguments', () => {
-      func('two');
       expect(func.startingWith('three')).not.toHaveBeenCalled();
     });
 
