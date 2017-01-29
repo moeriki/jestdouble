@@ -265,6 +265,8 @@ func([{ a: 1, z: 26 }, { b: 2 }, { c: 3 }]); // 'OK'
 
 **Mock**
 
+`jestdouble.invokes( arg:function [, options:object] )`
+
 `jestdouble.returns( arg:* [, options:object] )`
 
 `jestdouble.returnsThis( [options:object] )`
@@ -279,6 +281,8 @@ func([{ a: 1, z: 26 }, { b: 2 }, { c: 3 }]); // 'OK'
 
 **Conditional mock**
 
+`jestdouble.calledWith( ...args:* ).invokes( arg:function [, options:object] )`
+
 `jestdouble.calledWith( ...args:* ).returns( arg:* [, options:object] )`
 
 `jestdouble.calledWith( ...args:* ).returnsThis( [options:object] )`
@@ -290,6 +294,8 @@ func([{ a: 1, z: 26 }, { b: 2 }, { c: 3 }]); // 'OK'
 `jestdouble.calledWith( ...args:* ).callsback( arg:* [, options:object] ) // aliased as callbacks`
 
 `jestdouble.calledWith( ...args:* ).throws( arg:* [, options:object] )`
+
+`jestdouble.calledStartingWith( ...args:* ).invokes( arg:function [, options:object] )`
 
 `jestdouble.calledStartingWith( ...args:* ) .returns( arg:* [, options:object] )`
 
