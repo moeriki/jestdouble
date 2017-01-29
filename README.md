@@ -261,6 +261,60 @@ func([{ a: 1, z: 26 }, { b: 2 }, { c: 3 }]); // 'OK'
 
 `setMatchingOptions` delegates to `matchr.setDefaultOptions`.
 
+## API
+
+**Mock**
+
+`jestdouble.returns( arg:* [, options:object] )`
+
+`jestdouble.returnsThis( [options:object] )`
+
+`jestdouble.resolves( arg:* [, options:object] )`
+
+`jestdouble.rejects( arg:* [, options:object] )`
+
+`jestdouble.callsback( arg:* [, options:object] ) // aliased as callbacks`
+
+`jestdouble.throws( arg:* [, options:object] )`
+
+**Conditional mock**
+
+`jestdouble.calledWith( ...args:* ).returns( arg:* [, options:object] )`
+
+`jestdouble.calledWith( ...args:* ).returnsThis( [options:object] )`
+
+`jestdouble.calledWith( ...args:* ).resolves( arg:* [, options:object] )`
+
+`jestdouble.calledWith( ...args:* ).rejects( arg:* [, options:object] )`
+
+`jestdouble.calledWith( ...args:* ).callsback( arg:* [, options:object] ) // aliased as callbacks`
+
+`jestdouble.calledWith( ...args:* ).throws( arg:* [, options:object] )`
+
+`jestdouble.calledStartingWith( ...args:* ) .returns( arg:* [, options:object] )`
+
+`jestdouble.calledStartingWith( ...args:* ) .returnsThis( [options:object] )`
+
+`jestdouble.calledStartingWith( ...args:* ) .resolves( arg:* [, options:object] )`
+
+`jestdouble.calledStartingWith( ...args:* ) .rejects( arg:* [, options:object] )`
+
+`jestdouble.calledStartingWith( ...args:* ) .callsback( arg:* [, options:object] )  // aliased as callbacks`
+
+`jestdouble.calledStartingWith( ...args:* ) .throws( arg:* [, options:object] )`
+
+**Mock options**
+
+*   **times** mock result _N_ times
+
+**Verify**
+
+`expect( jestdouble ).toHaveBeenCalled();`
+
+`expect( jestdouble.with( ...args:* ) ).toHaveBeenCalled();`
+
+`expect( jestdouble.startingWith( ...args:* ) ).toHaveBeenCalled();`
+
 ## Notes
 
 **Results order**
