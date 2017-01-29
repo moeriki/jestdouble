@@ -1,5 +1,5 @@
 <p align="center">
-  <h3 align="center">jestdouble <small style="color:red">(not published yet)</small></h3>
+  <h3 align="center">jestdouble</h3>
   <p align="center">jestdouble is an alternative mock/spy for jasmine/jest.<p>
   <p align="center">
     <!--a href="https://www.npmjs.com/package/jestdouble">
