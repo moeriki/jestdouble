@@ -1,6 +1,6 @@
 module.exports = {
+  root: true,
   extends: [
     'muriki/presets/jest',
-    'muriki/es/2015-node4',
   ],
 };
