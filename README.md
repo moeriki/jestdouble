@@ -1,6 +1,6 @@
 <p align="center">
   <h3 align="center">jestdouble</h3>
-  <p align="center">jestdouble is an alternative mock/spy for jasmine/jest.<p>
+  <p align="center">jestdouble is an alternative mock/spy for jest.<p>
   <p align="center">
     <a href="https://www.npmjs.com/package/jestdouble">
       <img src="https://img.shields.io/npm/v/jestdouble.svg" alt="npm version">
