@@ -4,14 +4,14 @@
 
 const jd = require('../index'); // eslint-disable-line id-length
 
-const utils = require('./utils');
-
-const dontCallMe = utils.dontCallMe;
-const N_TIMES = utils.N_TIMES;
-const nTimes = utils.nTimes;
-const nTimesAsync = utils.nTimesAsync;
-const manyTimes = utils.manyTimes;
-const manyTimesAsync = utils.manyTimesAsync;
+const {
+  dontCallMe,
+  N_TIMES,
+  nTimes,
+  nTimesAsync,
+  manyTimes,
+  manyTimesAsync,
+} = require('./utils');
 
 // tests
 
