@@ -36,7 +36,7 @@
     "babel-preset-env": "~1.1.8",
     "coveralls": "^2.11.15",
     "eslint": "~3.14.1",
-    "eslint-config-muriki": "~8.1.4",
+    "eslint-config-muriki": "~8.2.0",
     "eslint-plugin-import": "~2.2.0",
     "eslint-plugin-jasmine": "~2.2.0",
     "eslint-plugin-node": "~3.0.5",
