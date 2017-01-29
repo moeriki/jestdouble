@@ -225,14 +225,16 @@ Both mocking results and verifying calls support smart value matching.
 ```javascript
 const func = jd();
 func.calledWith((str) => str === 'one').returns(1);
+func.calledWith(Number).returns(2);
 func('one'); // 1
+func(2); // 2
 ```
 
 ```javascript
 const func = jd();
 func('two');
 func('three');
-expect(func.with(/^t.*/)).toHaveBeenCalledTimes(2);
+expect(func.with(/^t/)).toHaveBeenCalledTimes(2);
 ```
 
 Check the [API of matchr](https://github.com/Moeriki/node-matchr) to learn all the possibilities.
