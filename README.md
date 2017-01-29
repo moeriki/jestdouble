@@ -40,7 +40,7 @@ $ npm install --save-dev jestdouble
 
 I wanted a mock/spy function that:
 
-*   could [conditionally verify calls](#conditionally-verifying-calls)
+*   could conditionally [mock results](#conditionally-mocking-results) / [verify calls](#conditionally-verifying-calls)
 *   had [smart value matching](#matching) enabled by default
 *   was [compatible with jasmine assertions](#verifying-calls)
 *   had an awesome API
