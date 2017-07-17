@@ -45,7 +45,7 @@ I wanted a mock/spy function that:
 *   was [compatible with jasmine assertions](#verifying-calls)
 *   had an awesome API
 
-<a name="quick-start" />
+<a name="quick-start"></a>
 ## Quick start
 
 ```javascript
