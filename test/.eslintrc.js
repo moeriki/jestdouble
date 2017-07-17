@@ -1,6 +1,9 @@
 module.exports = {
   root: true,
   extends: [
-    'muriki/presets/jest',
+    'muriki/jest',
   ],
+  rules: {
+    'jasmine/new-line-before-expect': 0,
+  },
 };
