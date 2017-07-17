@@ -142,22 +142,6 @@ func.callbacks(null, 1);
 func((err, value) => {/* null, 1 */});
 ```
 
-### Mocking options
-
-**times**
-
-```javascript
-const func = jd();
-func.calledWith('one').returns(1, { times: 1 });
-func.returns(2, { times: 1 });
-func.returns(3);
-
-func('one'); // 1
-func(); // 2
-func('one'); // 3
-func(); // 3
-```
-
 <a name="conditionally-mocking-results"></a>
 ## Conditionally mocking results
 
@@ -179,6 +163,22 @@ func.calledStartingWith('one').returns(1);
 func(); // undefined
 func('one'); // 1
 func('one', 'two'); // 1
+```
+
+## Mocking options
+
+### times
+
+```javascript
+const func = jd();
+func.calledWith('one').returns(1, { times: 1 });
+func.returns(2, { times: 1 });
+func.returns(3);
+
+func('one'); // 1
+func(); // 2
+func('one'); // 3
+func(); // 3
 ```
 
 <a name="verifying-calls"></a>
