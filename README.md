@@ -48,6 +48,8 @@ I wanted a mock/spy function that:
 <a name="quick-start"></a>
 ## Quick start
 
+All references to `expect` are [jest.expect](https://facebook.github.io/jest/docs/expect.html#content).
+
 ```javascript
 const jd = require('jestdouble');
 
