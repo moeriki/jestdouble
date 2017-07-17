@@ -20,9 +20,7 @@
   "jest": {
     "collectCoverageFrom": [
       "index.js"
-    ],
-    "testEnvironment": "node",
-    "testRegex": "/test/.*\\.test\\.js$"
+    ]
   },
   "lint-staged": {
     "*.js": "eslint"
