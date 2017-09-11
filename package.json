@@ -1,8 +1,15 @@
 {
   "name": "jestdouble",
   "version": "0.1.3",
-  "description": "",
-  "keywords": [],
+  "description": "An alternative mock/spy for jest",
+  "keywords": [
+    "jest",
+    "test",
+    "testdouble",
+    "spy",
+    "mock",
+    "stub"
+  ],
   "author": "Dieter Luypaert <dieterluypaert@gmail.com>",
   "license": "MIT",
   "repository": "git@github.com:Moeriki/jestdouble.git",
