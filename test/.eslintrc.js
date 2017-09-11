@@ -4,6 +4,6 @@ module.exports = {
     'muriki/jest',
   ],
   rules: {
-    'jasmine/new-line-before-expect': 0,
+    'jasmine/prefer-toHaveBeenCalledWith': 0,
   },
 };
