@@ -187,30 +187,38 @@ function jestdouble(invokee) {
     // register responses
     callbacks(error, value, options) {
       registerResponse(Object.assign({ error, type: 'callback', value }, options));
+      return double;
     },
     callsback(error, value, options) {
       registerResponse(Object.assign({ error, type: 'callback', value }, options));
+      return double;
     },
     invokes(func, options) {
       if (typeof func !== 'function') {
         throw new TypeError(`Expected invokee to be of type 'function'. Instead it is of type '${typeof func}'`);
       }
       registerResponse(Object.assign({ invokee: func, type: 'invokee' }, options));
+      return double;
     },
     returns(value, options) {
       registerResponse(Object.assign({ type: 'return', value }, options));
+      return double;
     },
     returnsThis(options) {
       registerResponse(Object.assign({ type: 'return', value: THIS }, options));
+      return double;
     },
     resolves(value, options) {
       registerResponse(Object.assign({ type: 'promise', value }, options));
+      return double;
     },
     rejects(error, options) {
       registerResponse(Object.assign({ error, type: 'promise' }, options));
+      return double;
     },
     throws(error, options) {
       registerResponse(Object.assign({ error, type: 'return' }, options));
+      return double;
     },
     // verify calls
     startingWith() {
