@@ -145,7 +145,6 @@ function jestdouble(invokee) {
     }
 
     response.times--;
-    last(calls).response = response;
 
     switch (response.type) { // eslint-disable-line default-case
       case 'callback':
